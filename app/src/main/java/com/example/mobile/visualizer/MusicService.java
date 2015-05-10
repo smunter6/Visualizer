@@ -30,6 +30,7 @@ public class MusicService extends Service implements
     private final IBinder musicBind = new MusicBinder();
     //title of current song
     private String songTitle="";
+    public String artistName="";
     //notification id
     private static final int NOTIFY_ID=1;
     //shuffle flag and random
@@ -95,6 +96,14 @@ public class MusicService extends Service implements
         return false;
     }
 
+    public String getTitle(){
+        return songTitle;
+    }
+
+    public String getArtist(){
+        return artistName;
+    }
+
     //play a song
     public void playSong(boolean prepOnly){
         //play
@@ -103,6 +112,8 @@ public class MusicService extends Service implements
         Song song = songs.get(songPosn);
         //get title
         songTitle=song.getTitle();
+        artistName = song.getArtist();
+
         //get id
         long currSong = song.getID();
         //set uri

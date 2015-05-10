@@ -23,6 +23,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ListView;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
@@ -78,6 +80,11 @@ public class MainActivity extends ServiceHandler implements MediaPlayerControl {
         tabSpec.setIndicator("Artist");
         tabHost.addTab(tabSpec);
 
+        tabSpec = tabHost.newTabSpec("web");
+        tabSpec.setContent(R.id.tabWeb);
+        tabSpec.setIndicator("Lyrics");
+        tabHost.addTab(tabSpec);
+
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -88,6 +95,13 @@ public class MainActivity extends ServiceHandler implements MediaPlayerControl {
                 } else if (i == 1) {
                     musicSrv.setList(artistList);
                     tab = 1;
+                }else if (i == 2) {
+                    WebView myWebView = (WebView) findViewById(R.id.web);
+                    myWebView.setWebViewClient(new WebViewClient());
+                    myWebView.getSettings().setJavaScriptEnabled(true);
+                    String link = "http://www.musixmatch.com/lyrics/" + musicSrv.getArtist().toLowerCase() + "/" + musicSrv.getTitle().toLowerCase() + ".html";
+                    myWebView.loadUrl(link);
+                    tab = 2;
                 }
             }
         });
