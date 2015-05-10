@@ -180,7 +180,11 @@ public class MainActivity extends ServiceHandler implements MediaPlayerControl {
                 musicSrv=null;
                 System.exit(0);
                 break;
-
+            case R.id.action_viz:
+                    //unbindService(musicSrv);
+                    LocalBroadcastManager.getInstance(this).unregisterReceiver(onPrepareReceiver);
+                    Intent intent = new Intent(getApplicationContext(), VisualizerActivity.class);
+                    startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
