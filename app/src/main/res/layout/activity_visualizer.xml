@@ -11,11 +11,11 @@
         android:layout_weight="1"
         android:background="#000" >
 
-        <com.example.mobile.visualizer
+        <com.example.mobile.visualizer.VisualizerView
             android:id="@+id/visualizerView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" >
-        </com.example.mobile.visualizer>
+        </com.example.mobile.visualizer.VisualizerView>
 
     </FrameLayout>
 
