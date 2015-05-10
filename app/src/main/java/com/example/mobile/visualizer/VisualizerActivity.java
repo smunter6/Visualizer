@@ -20,6 +20,6 @@ public class VisualizerActivity extends ServiceHandler {
         // We need to link the visualizer view to the media player so that
         // it displays something
         mVisualizerView = (VisualizerView) findViewById(R.id.visualizerView);
-        mVisualizerView.link(musicSrv.getPlayer());
+        //mVisualizerView.link(musicSrv.getPlayer());
     }
 }

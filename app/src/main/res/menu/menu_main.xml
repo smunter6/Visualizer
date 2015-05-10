@@ -10,8 +10,13 @@
     <item
         android:id="@+id/action_end"
         android:icon="@drawable/end"
+        android:orderInCategory="2"
+        android:showAsAction="always"
+        android:title="End"/>
+    <item
+        android:id="@+id/action_viz"
+        android:icon="@drawable/end"
         android:orderInCategory="1"
         android:showAsAction="always"
         android:title="End"/>
-
 </menu>

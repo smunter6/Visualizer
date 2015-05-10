@@ -31,6 +31,8 @@ public class ServiceHandler extends Activity {
     //binding
     public boolean musicBound=false;
     public MusicService musicSrv;
+    public boolean alreadyPlaying = false;
+    public boolean playbackPaused = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class ServiceHandler extends Activity {
     protected void onPause(){
         super.onPause();
         //unbindService(musicConnection);
+        musicBound = false;
     }
 
 
@@ -86,7 +89,9 @@ public class ServiceHandler extends Activity {
             musicSrv = binder.getService();
             //pass list
             musicSrv.setList(songList);
-            musicSrv.playSong(true);
+            if(playbackPaused) {
+                musicSrv.playSong(true);
+            }
             musicBound = true;
         }
 
